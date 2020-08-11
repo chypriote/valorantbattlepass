@@ -1,0 +1,57 @@
+{
+  "name": "nuxt-base",
+  "version": "1.0.0",
+  "description": "Base Nuxt app",
+  "author": "NicolasT",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore . --fix",
+    "lint:css": "stylelint --ignore-path .gitignore **/*.{css,vue} --fix",
+    "lint": "yarn lint:js && yarn lint:css"
+  },
+  "dependencies": {
+    "@nuxtjs/dotenv": "^1.4",
+    "@nuxtjs/google-adsense": "^1.1",
+    "@nuxtjs/google-analytics": "^2.4",
+    "@nuxtjs/pwa": "3.0.0-beta.20",
+    "chart.js": "^2.9",
+    "date-fns": "^2.15",
+    "nuxt": "^2.14",
+    "reset-css": "^5.0.1",
+    "vue-chartjs": "^3.5",
+    "vuex": "^3.5",
+    "vuex-persistedstate": "^3.1",
+    "webpack": "^4.44"
+  },
+  "devDependencies": {
+    "@nuxtjs/eslint-config": "^3.1",
+    "@nuxtjs/eslint-module": "^2.0",
+    "@nuxtjs/stylelint-module": "^4.0",
+    "@types/node": "^14.0",
+    "babel-eslint": "^10.1",
+    "eslint": "^7.6",
+    "eslint-config-prettier": "^6.11",
+    "eslint-plugin-nuxt": "^1.0",
+    "eslint-plugin-prettier": "^3.1",
+    "husky": "^4.2",
+    "lint-staged": "^10.2",
+    "postcss-comment": "^2.0",
+    "postcss-custom-media": "^7.0",
+    "postcss-nested": "^4.2",
+    "stylelint": "^13.6",
+    "stylelint-config-standard": "^20.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,vue,ts}": "eslint --ext .js,.vue --ignore-path .gitignore . --fix",
+    "*.{css,vue}": "stylelint --ignore-path .gitignore **/*.{css,vue} --fix"
+  }
+}
