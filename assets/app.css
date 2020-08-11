@@ -1,4 +1,22 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400,400i,700");
 
+/* @import 'node_modules/shoelace-css/source/css/variables.css'; */
+
+/* @import 'node_modules/shoelace-css/source/css/grid.css'; */
+:root {
+	--font-system: 'Lato', "Segoe UI", 'Roboto', sans-serif;
+}
+#app {
+	display: block;
+	background: var(--body-bg-color);
+	font-family: var(--font-family);
+	font-weight: var(--font-weight);
+	font-size: var(--font-size);
+	color: var(--body-color);
+	line-height: var(--line-height);
+	height: 100vh;
+	overflow: hidden;
+}
 a {
 	text-decoration: none;
 	cursor: pointer;

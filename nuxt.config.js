@@ -14,7 +14,7 @@ export default {
 		],
 		link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
 	},
-	css: ['reset-css', '~/assets/app.css'],
+	css: ['reset-css', 'shoelace-css/dist/shoelace.css', '~/assets/app.css'],
 	plugins: [{ src: '~/plugins/persistedstate', ssr: false }],
 	components: false,
 	telemetry: false,
@@ -24,6 +24,7 @@ export default {
 	],
 	modules: [
 		'@nuxtjs/dotenv',
+		'@nuxt/content',
 		'@nuxtjs/pwa',
 		!isDev ? ['@nuxtjs/google-analytics', { id: process.env.google_analytics }] : '',
 		['@nuxtjs/google-adsense', { id: `ca-pub-${process.env.adsense_id}` }],
