@@ -1,7 +1,7 @@
 {
   "title": "Act 2",
-	"start": "04-08-2020",
-	"end": "12-10-2020",
+	"start": "2020-08-04",
+	"end": "2020-10-12",
 	"levels": [
 		{ "chapter": 1, "id": 1, "unlocks": ["Hivemind Ares"], "needed": 0, "free": null },
 		{ "chapter": 1, "id": 2, "unlocks": ["Split Decision Buddy"], "needed": 4000, "free": null },

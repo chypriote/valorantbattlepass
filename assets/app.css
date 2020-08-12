@@ -1,8 +1,4 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:300,400,400i,700");
-
-/* @import 'node_modules/shoelace-css/source/css/variables.css'; */
-
-/* @import 'node_modules/shoelace-css/source/css/grid.css'; */
 :root {
 	--font-system: 'Lato', "Segoe UI", 'Roboto', sans-serif;
 }
@@ -21,8 +17,14 @@ a {
 	text-decoration: none;
 	cursor: pointer;
 }
+p {margin-bottom: 0;}
 img {
 	height: auto;
 	max-width: 100%;
 	vertical-align: middle;
+}
+thead {
+	background-color: #ff4655;
+	color: #fff;
+	font-weight: bold;
 }
