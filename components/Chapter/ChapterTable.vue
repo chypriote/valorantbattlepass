@@ -4,35 +4,43 @@
 		<tr>
 			<th class="chapter">Chapter</th>
 			<th class="level">Level</th>
-			<th>Unlocks</th>
+			<th class="unlocks">Unlocks</th>
 			<th class="needed">XP Needed</th>
 			<th class="totalxp">Total XP</th>
 			<th class="percentage">% Progress</th>
 		</tr>
 		</thead>
 		<tbody>
-			<chapter-row v-for="(level, index) in act.levels" :key="level.id" :level="level" :index="index" :total-xp="totalXp(index)" :percentage="percentage(index)" />
+			<chapter-row
+				v-for="(level, index) in act.levels" :key="level.id"
+				:level="level"
+				:index="index"
+				:row-xp="rowXp(index)"
+				:percentage="percentage(index)"
+				:top="index % 5 === 0"
+				:bottom="index % 5 === 4"
+			/>
 		</tbody>
 	</table>
 </template>
 
 <script>
-import ChapterRow from '@/components/ChapterRow'
+import ChapterRow from '~/components/Chapter/ChapterRow'
+import { mapState } from 'vuex'
 
 export default {
 	components: { ChapterRow },
-	props: {
-		act: {
-			type: Object,
-			required: true,
-		},
+	computed: {
+		...mapState({
+			act: 'act',
+		}),
 	},
 	methods: {
-		totalXp(index) { return this.act.levels.slice(0, index + 1).reduce((sum, level) => sum + level.needed, 0) },
+		rowXp(index) { return this.act.levels.slice(0, index + 1).reduce((sum, level) => sum + level.needed, 0) },
 		percentage(index) {
 			const total = this.act.levels.reduce((sum, level) => sum + level.needed, 0)
 
-			return Math.round(this.totalXp(index) / total * 100)
+			return Math.round(this.rowXp(index) / total * 100)
 		},
 	},
 }

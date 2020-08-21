@@ -15,7 +15,7 @@ export default {
 		link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
 	},
 	css: ['reset-css', 'shoelace-css/dist/shoelace.css', '~/assets/app.css'],
-	plugins: [{ src: '~/plugins/persistedstate', ssr: false }],
+	plugins: [{ src: '~/plugins/persistedstate', ssr: false }, '~/plugins/filters'],
 	components: false,
 	telemetry: false,
 	buildModules: [

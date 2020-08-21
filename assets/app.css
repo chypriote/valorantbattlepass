@@ -28,3 +28,9 @@ thead {
 	color: #fff;
 	font-weight: bold;
 }
+tbody {
+	border: 1px solid #ff4655;
+}
+td[rowspan] {
+	border: 1px solid #ff4655;
+}
