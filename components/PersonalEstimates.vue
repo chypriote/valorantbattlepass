@@ -34,24 +34,3 @@ export default {
 	},
 }
 </script>
-
-<style scoped>
-header {
-	background-color: #ff4655;
-	color: #fff;
-	font-weight: bold;
-	text-align: center;
-	padding: .25rem 1rem;
-}
-.card {
-	border: 1px solid #ff4655;
-	.content {
-		padding: .5rem;
-	}
-}
-.indicator {
-	display: flex;
-	justify-content: space-between;
-	.title {font-weight: bold;}
-}
-</style>

@@ -9,6 +9,7 @@ export const state = () => ({
 })
 
 export const getters = {
+	daysLeft: state => differenceInDays(new Date(), new Date(state.act.start)),
 	myXp: state => {
 		const level = state.current_level
 		const done = state.act.levels[level - 1].needed - parseInt(state.current_missing)
@@ -16,9 +17,10 @@ export const getters = {
 		return state.act.levels.slice(0, level - 1).reduce((sum, level) => sum + level.needed, 0) + done
 	},
 	myPercent: (state, getters) => getters.myXp / state.total_xp * 100,
-	myAverage: (state, getters) => getters.myXp / differenceInDays(new Date(), new Date(state.act.start)),
-	myEnd: (state, getters) => add(new Date(), { days: Math.ceil((state.total_xp - getters.myXp) / getters.myAverage) }),
+	myAverage: (state, getters) => getters.myXp / getters.daysLeft,
+	myEnd: (state, getters) => { return add(new Date(), { days: Math.ceil((state.total_xp - getters.myXp) / (getters.myAverage || 1)) })},
 	myFinish: (state, getters) => differenceInDays(getters.myEnd, new Date(state.act.end)),
+	missingXp: (state, getters) => state.total_xp - getters.myXp,
 }
 
 export const mutations = {

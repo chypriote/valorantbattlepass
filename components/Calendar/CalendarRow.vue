@@ -3,10 +3,10 @@
 		:class="{'today': today, 'me': me, 'top': top, 'bottom': bottom, 'hint--top': me || today }"
 		:aria-label="me ? 'Your current Xp' : today ? 'Optimal Xp' : ''"
 	>
-		<td v-if="top" :rowspan="index !== 0 ? 7 : 9 - getDay(day)" class="week">Week {{ Math.round(index / 7) + 1 }}</td>
-		<td>{{ day| date }}</td>
-		<td>{{ }}</td>
-		<td>{{ neededXp |formatNumber }}</td>
+		<td v-if="top || isTuesday(day)" :rowspan="index !== 0 ? 7 : 9 - getDay(day)" class="week">Week {{ Math.round(index / 7) + 1 }}</td>
+		<td class="date">{{ day| date }}</td>
+		<td class="my-xp">{{ myAverage * (index + 1) |formatNumber }}</td>
+		<td class="required-xp">{{ neededXp |formatNumber }}</td>
 	</tr>
 </template>
 
@@ -50,6 +50,7 @@ export default {
 		}),
 		...mapGetters({
 			myXp: 'myXp',
+			myAverage: 'myAverage',
 		}),
 		today() { return isToday(this.day) },
 	},
@@ -57,8 +58,8 @@ export default {
 </script>
 
 <style scoped>
-tr.top > td {border-top: 1px solid #ff4655;}
-tr.bottom > td {border-bottom: 1px solid #ff4655;}
+tr.top > td {border-top: 1px solid var(--state-primary);}
+tr.bottom > td {border-bottom: 1px solid var(--state-primary);}
 .week {
 	vertical-align: middle;
 	transform: rotate(-60deg);
@@ -69,4 +70,7 @@ tr.bottom > td {border-bottom: 1px solid #ff4655;}
 .me {
 	background-color: lavender;
 }
+.date {text-align: center;}
+.my-xp {text-align: right;}
+.required-xp {text-align: right;}
 </style>

@@ -5,19 +5,19 @@
 			<th class="week">Week</th>
 			<th class="date">Date</th>
 			<th class="your-xp">Your XP</th>
-			<th class="opti-xp">Optim XP</th>
+			<th class="opti-xp">Optimal XP</th>
 		</tr>
 		</thead>
 		<tbody>
 			<calendar-row
-				v-for="(day, index) in days"
+				v-for="(day, index) in all_days"
 				:key="index"
-				:index="index"
-				:day="day"
-				:needed-xp="needed(index)"
-				:me="needed(index) < myXp && needed(index + 1) > myXp"
-				:top="index === 0 || isTuesday(day)"
-				:bottom="index % 7 === 6"
+				:index="index + start"
+				:day="new Date(day)"
+				:needed-xp="needed(index + start)"
+				:me="needed(index + start) > myXp && needed(index + start - 1) < myXp"
+				:top="index + start === 0"
+				:bottom="(index + start) % 7 === 6"
 				/>
 		</tbody>
 	</table>
@@ -31,6 +31,12 @@ import CalendarRow from '~/components/Calendar/CalendarRow'
 export default {
 	components: { CalendarRow },
 	data: () => ({ getDay, isTuesday, isToday	}),
+	props: {
+		half: {
+			type: Boolean,
+			default: false,
+		},
+	},
 	computed: {
 		...mapState({
 			act: 'act',
@@ -40,6 +46,9 @@ export default {
 		...mapGetters({
 			myXp: 'myXp',
 		}),
+		halfCount() { return this.days.length /2 },
+		start() { return this.half ? this.halfCount : 0 },
+		all_days() { return this.days.slice(this.start, this.half ? this.days.length : this.halfCount) },
 	},
 	methods: {
 		needed(index, xp = 0) {
@@ -53,7 +62,8 @@ export default {
 </script>
 
 <style scoped>
-.week {text-align: center;}
-.your-xp {text-align: center;}
-.opti-xp {text-align: center;}
+.week {text-align: center;width: 15%;}
+.date {text-align: center;width: 25%;}
+.your-xp {text-align: center;width: 30%;}
+.opti-xp {text-align: center;width: 30%;}
 </style>

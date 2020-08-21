@@ -46,8 +46,8 @@ export default {
 </script>
 
 <style scoped>
-tr.top > td {border-top: 1px solid #ff4655;}
-tr.bottom > td {border-bottom: 1px solid #ff4655;}
+tr.top > td {border-top: 1px solid var(--state-primary);}
+tr.bottom > td {border-bottom: 1px solid var(--state-primary);}
 .chapter {
 	vertical-align: middle;
 	transform: rotate(-60deg);
